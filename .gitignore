@@ -7,7 +7,7 @@ uploads
 progress.log
 *.pyc
 .idea
-
+config.py
 
 
 # ---> Python
