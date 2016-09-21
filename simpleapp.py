@@ -16,12 +16,10 @@ def userlist():
 def adduser():
     return "this is add user"
 
-@route("/userinfo")
 @route("/userinfo/<userid:int>")
 def userinf(userid):
     if userid:
         return "user id is {id}".format(id=userid)
-    else:
-        return "user info"
+
 
 run(host='localhost', port=8000, debug=True)
