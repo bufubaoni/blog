@@ -22,8 +22,9 @@ def userlist():
 @route("/adduser")
 @post("/adduser")
 def adduser():
-    user = request.body
-    return user
+    if request.method == "POST":
+        return request.body
+    return "you can add user in this fun"
 
 
 @route("/infouser")
