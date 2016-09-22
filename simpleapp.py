@@ -7,19 +7,15 @@ from beaker.middleware import SessionMiddleware
 import bottle
 import json
 from config import session_option
+from Auth import RequireLoginLogin,RequireAuth
 app = bottle.app()
 myapp = SessionMiddleware(app, session_option)
-# app.install(myapp)
+
 
 @route('/')
+@RequireLoginLogin
 def index():
-    s = request.environ.get("beaker.session")
-    if s:
-        s["test"] = "ok"
-        return s["test"]
-    else:
-
-        return "it is index "
+    return "it is index "
 
 
 @route("/listuser")
@@ -32,6 +28,7 @@ def userlist():
 
 @route("/adduser")
 @post("/adduser")
+@RequireAuth("admin")
 def adduser():
     if request.method == "POST":
         return request.body
@@ -52,5 +49,10 @@ def userinfo(userid=None):
 def deleteuser(userid=None):
     if userid:
         return "seccuss delete user id is {id}".format(id=userid)
+
+
+@route("/autherror")
+def autherror():
+    return "auth error you get"
 
 bottle.run(app=myapp, host='localhost', port=8000,debug=True )
