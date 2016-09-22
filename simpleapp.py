@@ -3,15 +3,23 @@
 # just is a simple app
 from bottle import route, run, request, post
 from model import db_shadowsocks
+from beaker.middleware import SessionMiddleware
 import bottle
 import json
-
+from config import session_option
 app = bottle.app()
-
+myapp = SessionMiddleware(app, session_option)
+# app.install(myapp)
 
 @route('/')
 def index():
-    return "this is index for roote"
+    s = request.environ.get("beaker.session")
+    if s:
+        s["test"] = "ok"
+        return s["test"]
+    else:
+
+        return "it is index "
 
 
 @route("/listuser")
@@ -45,4 +53,4 @@ def deleteuser(userid=None):
     if userid:
         return "seccuss delete user id is {id}".format(id=userid)
 
-bottle.run(app=app,host='localhost', port=8000,debug=True )
+bottle.run(app=myapp, host='localhost', port=8000,debug=True )

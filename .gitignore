@@ -8,6 +8,7 @@ progress.log
 *.pyc
 .idea
 config.py
+session/*
 
 
 # ---> Python
