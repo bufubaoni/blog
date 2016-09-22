@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # just is a simple app
-from bottle import route, run, post, get
+from bottle import route, run, request, post
 from model import db_shadowsocks
 import json
 
@@ -11,30 +11,33 @@ def index():
     return "this is index for roote"
 
 
-@route("/userlist")
+@route("/listuser")
 def userlist():
     userlist = db_shadowsocks(db_shadowsocks.user.id > 0).select(db_shadowsocks.user.id,
                                                                  db_shadowsocks.user.email,
                                                                  db_shadowsocks.user.port, )
     return json.dumps(userlist.as_dict())
 
-@get("/adduser")
-@post("/adduser/<user>")
-def adduser(user=None):
-    return "this is add user"
 
-@route("/userinfo")
-@route("/userinfo/<userid:int>")
+@route("/adduser")
+@post("/adduser")
+def adduser():
+    user = request.body
+    return user
+
+
+@route("/infouser")
+@route("/infouser/<userid:int>")
 def userinfo(userid=None):
     if userid:
         userinfo = db_shadowsocks(db_shadowsocks.user.id == userid).select().first()
         return json.dumps(userinfo.as_dict())
-    else:
-        return
+    return "some user info but you didn't input anything"
 
-@route("/userdelete")
-@route("/userdelete/<userid:int>")
-def deleteuser(userid):
+
+@route("/deleteuser")
+@route("/deleteuser/<userid:int>")
+def deleteuser(userid=None):
     if userid:
         return "seccuss delete user id is {id}".format(id=userid)
 
