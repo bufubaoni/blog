@@ -3,7 +3,10 @@
 # just is a simple app
 from bottle import route, run, request, post
 from model import db_shadowsocks
+import bottle
 import json
+
+app = bottle.app()
 
 
 @route('/')
@@ -42,5 +45,4 @@ def deleteuser(userid=None):
     if userid:
         return "seccuss delete user id is {id}".format(id=userid)
 
-
-run(host='localhost', port=8000, debug=True)
+bottle.run(app=app,host='localhost', port=8000,debug=True )
