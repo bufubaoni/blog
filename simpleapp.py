@@ -11,8 +11,9 @@ def index():
 
 @route("/userlist")
 def userlist():
-    userlist=db_shadowsocks(db_shadowsocks.user.id>0).select()
-    
+    userlist=db_shadowsocks(db_shadowsocks.user.id>0).select(db_shadowsocks.user.id,
+    db_shadowsocks.user.email,
+    db_shadowsocks.user.port,)
     return json.dumps(userlist.as_dict())
 
 @route("/adduser")
@@ -20,9 +21,10 @@ def adduser():
     return "this is add user"
 
 @route("/userinfo/<userid:int>")
-def userinf(userid):
+def userinfo(userid):
     if userid:
-        return "user id is {id}".format(id=userid)
+        userinfo=db_shadowsocks(db_shadowsocks.user.id==userid).select().first()
+        return json.dumps(userinfo.as_dict())
 
 @route("/userdelete/<userid:int>")
 def deleteuser(userid):
