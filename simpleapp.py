@@ -7,14 +7,14 @@ from beaker.middleware import SessionMiddleware
 import bottle
 import json
 from config import session_option
-from Auth import RequireLoginLogin, RequireAuth, setSession
+from Auth import RequireLogin, RequireAuth, setSession
 import User
 app = bottle.app()
 myapp = SessionMiddleware(app, session_option)
 
 
 @route('/')
-@RequireLoginLogin
+@RequireLogin
 def index(session=None):
     # session = request.environ.get("beaker.session")
     if session:

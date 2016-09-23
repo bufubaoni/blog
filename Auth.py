@@ -11,7 +11,7 @@ def setSession(action):
     return sessions
 
 
-def RequireLoginLogin(action):
+def RequireLogin(action):
     def login(*args, **kwargs):
         session = request.environ.get("beaker.session")
         if session.get("email"):
