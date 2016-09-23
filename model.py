@@ -20,4 +20,3 @@ db_shadowsocks.define_table("user",
                             Field("last_get_gift_time", "integer"),
                             Field("last_rest_pass_time", "integer"),
                             migrate=False)
-
