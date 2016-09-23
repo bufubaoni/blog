@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from bottle import route, post, request, redirect
 from model import db_shadowsocks
+from Auth import RequireLogin
 
 
 @route("/login")
@@ -27,3 +28,9 @@ def login():
            "<input name='password' type='password'>" \
            "</br>" \
            "<input type='submit'></form>"
+@route("/logout")
+@RequireLogin
+def logout(session=None):
+    if session:
+        session.delete()
+    return "logout seccuss"
