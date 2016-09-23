@@ -17,8 +17,7 @@ def RequireLogin(action):
         if session.get("email"):
             return action(session=session, *args, **kwargs)
         else:
-            redirect("/autherror")
-
+            redirect("/login")
     return login
 
 

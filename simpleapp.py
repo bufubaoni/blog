@@ -42,9 +42,9 @@ def adduser(session=None):
 
 
 @route("/infouser")
-@route("/infouser/<userid:int>")
 @RequireLogin
-def userinfo(userid=None):
+def userinfo(session=None):
+    userid = session.get("id")
     if userid:
         user = db_shadowsocks(db_shadowsocks.user.id == userid).select().first()
         return json.dumps(user.as_dict())

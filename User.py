@@ -18,6 +18,8 @@ def login():
             session["username"] = username
             session["type"] = user.type
             session["id"] = user.id
+            session["userid"] = user.id
+            session["email"] = username
             redirect("/")
     return "<form action='/login' method='post'>" \
            "<input name='username' />" \
