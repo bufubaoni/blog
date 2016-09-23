@@ -26,7 +26,5 @@ def RequireAuth(authname):
                 return action(*args, **kwargs)
             else:
                 redirect("/autherror")
-
         return conaction
-
     return auth
