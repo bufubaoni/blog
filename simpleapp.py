@@ -28,7 +28,6 @@ def userlist():
     users = db_shadowsocks(db_shadowsocks.user.id > 0).select(db_shadowsocks.user.id,
                                                               db_shadowsocks.user.email,
                                                               db_shadowsocks.user.port,
-                                                              db_shadowsocks.user.passwd,
                                                               db_shadowsocks.user.type)
     return json.dumps(users.as_dict())
 
