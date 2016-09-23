@@ -53,7 +53,8 @@ def userinfo(session=None):
 
 @route("/deleteuser")
 @route("/deleteuser/<userid:int>")
-def deleteuser(userid=None):
+@RequireAuth("admin")
+def deleteuser(session=None, userid=None):
     if userid:
         return "seccuss delete user id is {id}".format(id=userid)
 
