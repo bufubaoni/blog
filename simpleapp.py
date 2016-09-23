@@ -9,15 +9,16 @@ import json
 from config import session_option
 from Auth import RequireLogin, RequireAuth, setSession
 import User
+
 app = bottle.app()
 myapp = SessionMiddleware(app, session_option)
 
 
 @route('/')
-@RequireLogin
+@setSession
 def index(session=None):
     # session = request.environ.get("beaker.session")
-    if session:
+    if session.get("username"):
         return "user: {username}".format(username=session["username"])
     return "it is index "
 
@@ -25,15 +26,16 @@ def index(session=None):
 @route("/listuser")
 def userlist():
     users = db_shadowsocks(db_shadowsocks.user.id > 0).select(db_shadowsocks.user.id,
-                                                                 db_shadowsocks.user.email,
-                                                                 db_shadowsocks.user.port, )
+                                                              db_shadowsocks.user.email,
+                                                              db_shadowsocks.user.port,
+                                                              db_shadowsocks.user.type)
     return json.dumps(users.as_dict())
 
 
 @route("/adduser")
 @post("/adduser")
 @RequireAuth("admin")
-def adduser():
+def adduser(session=None):
     if request.method == "POST":
         return request.body
     return "you can add user in this fun"
@@ -58,5 +60,6 @@ def deleteuser(userid=None):
 @route("/autherror")
 def autherror():
     return "auth error you get"
+
 
 bottle.run(app=myapp, host='localhost', port=8000, debug=True)
