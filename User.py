@@ -10,10 +10,18 @@ def login():
     if request.method == "POST":
         username = request.forms["username"]
         password = request.forms["password"]
-        users = db_shadowsocks((db_shadowsocks.shadowsocks.email == username.strip()) &
-                              (db_shadowsocks.shadowsocks.passwd == password.strip()))
-        users.first()
-        session = request.environ.get("beaker.session")
-        session["username"] = username
-        redirect("/")
-    return "<form action='/login' method='post'><input name='username' /></br><input type='submit'></form>"
+        users = db_shadowsocks((db_shadowsocks.user.email == username.strip()) &
+                               (db_shadowsocks.user.passwd == password.strip()))
+        user = users.select().first()
+        if user:
+            session = request.environ.get("beaker.session")
+            session["username"] = username
+            session["type"] = user.type
+            session["id"] = user.id
+            redirect("/")
+    return "<form action='/login' method='post'>" \
+           "<input name='username' />" \
+           "</br>" \
+           "<input name='password' type='password'>" \
+           "</br>" \
+           "<input type='submit'></form>"

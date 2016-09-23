@@ -26,7 +26,7 @@ def RequireAuth(authname):
     def auth(action):
         def conaction(*args, **kwargs):
             session = request.environ.get("beaker.session")
-            if session.get("usertype") == emu_auth_type[authname]:
+            if session.get("type") == emu_auth_type[authname]:
                 return action(session=session, *args, **kwargs)
             else:
                 redirect("/autherror")
