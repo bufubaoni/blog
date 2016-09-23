@@ -11,9 +11,10 @@ def index():
 
 @route("/userlist")
 def userlist():
-    userlist=db_shadowsocks(db_shadowsocks.user.id>0).select(db_shadowsocks.user.id,
-    db_shadowsocks.user.email,
-    db_shadowsocks.user.port,)
+    userlist=db_shadowsocks(db_shadowsocks.user.id>0).select(
+                                                            db_shadowsocks.user.id,
+                                                            db_shadowsocks.user.email,
+                                                            db_shadowsocks.user.port,)
     return json.dumps(userlist.as_dict())
 
 @route("/adduser")
