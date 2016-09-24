@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # just is a simple app
-from bottle import route, run, request, post
+from bottle import route, run, request, post, json_dumps, json_lds
 from model import db_shadowsocks
 from beaker.middleware import SessionMiddleware
 import bottle
-import json
 from config import session_option
 from Auth import RequireLogin, RequireAuth, setSession
 import User
@@ -17,7 +16,6 @@ myapp = SessionMiddleware(app, session_option)
 @route('/')
 @setSession
 def index(session=None):
-    # session = request.environ.get("beaker.session")
     if session.get("username"):
         return "user: {username}".format(username=session["username"])
     return "it is index "
@@ -29,7 +27,7 @@ def userlist():
                                                               db_shadowsocks.user.email,
                                                               db_shadowsocks.user.port,
                                                               db_shadowsocks.user.type)
-    return json.dumps(users.as_dict())
+    return json_dumps(users.as_dict())
 
 
 @route("/adduser")
@@ -37,7 +35,13 @@ def userlist():
 @RequireAuth("admin")
 def adduser(session=None):
     if request.method == "POST":
-        return request.body
+        try:
+            newuser = json_lds(request.body)
+        except TypeError:
+            newuser = {key: value[0] for key, value in request.forms.dict.items()}
+        if newuser:
+            db_shadowsocks
+
     return "you can add user in this fun"
 
 
@@ -47,7 +51,7 @@ def userinfo(session=None):
     userid = session.get("id")
     if userid:
         user = db_shadowsocks(db_shadowsocks.user.id == userid).select().first()
-        return json.dumps(user.as_dict())
+        return json_dumps(user.as_dict())
     return "some user info but you didn't input anything"
 
 
@@ -62,6 +66,8 @@ def deleteuser(session=None, userid=None):
 @route("/autherror")
 def autherror():
     return "auth error you get"
+
+
 
 
 bottle.run(app=myapp, host='localhost', port=8000, debug=True)
