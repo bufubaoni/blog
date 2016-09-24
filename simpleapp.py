@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # just is a simple app
-from bottle import route, run, request, post, json_dumps, json_lds
-from model import db_shadowsocks, db_add,db_delet
+from bottle import route, request, post, json_dumps, json_lds, error
+from model import db_shadowsocks, db_add, db_delet
 from beaker.middleware import SessionMiddleware
 import bottle
 from config import session_option
@@ -62,7 +62,7 @@ def deleteuser(session=None, userid=None):
         return json_dumps(db_delet(userid))
 
 
-
+@error(403)
 @route("/autherror")
 def autherror():
     return "auth error you get"
