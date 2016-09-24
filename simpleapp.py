@@ -41,8 +41,7 @@ def adduser(session=None):
             newuser = {key: value[0] for key, value in request.forms.dict.items()}
         if newuser:
             state, msg = db_add(newuser)
-            if not state:
-                return msg
+            return json_dumps((state, msg))
     return "you can add user in this fun"
 
 
