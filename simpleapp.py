@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # just is a simple app
 from bottle import route, run, request, post, json_dumps, json_lds
-from model import db_shadowsocks
+from model import db_shadowsocks, db_add
 from beaker.middleware import SessionMiddleware
 import bottle
 from config import session_option
@@ -40,8 +40,9 @@ def adduser(session=None):
         except TypeError:
             newuser = {key: value[0] for key, value in request.forms.dict.items()}
         if newuser:
-            db_shadowsocks
-
+            state, msg = db_add(newuser)
+            if not state:
+                return msg
     return "you can add user in this fun"
 
 
@@ -66,8 +67,6 @@ def deleteuser(session=None, userid=None):
 @route("/autherror")
 def autherror():
     return "auth error you get"
-
-
 
 
 bottle.run(app=myapp, host='localhost', port=8000, debug=True)
