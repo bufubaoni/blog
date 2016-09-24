@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # just is a simple app
 from bottle import route, run, request, post, json_dumps, json_lds
-from model import db_shadowsocks, db_add
+from model import db_shadowsocks, db_add,db_delet
 from beaker.middleware import SessionMiddleware
 import bottle
 from config import session_option
@@ -40,8 +40,7 @@ def adduser(session=None):
         except TypeError:
             newuser = {key: value[0] for key, value in request.forms.dict.items()}
         if newuser:
-            state, msg = db_add(newuser)
-            return json_dumps((state, msg))
+            return json_dumps(db_add(newuser))
     return "you can add user in this fun"
 
 
@@ -60,7 +59,8 @@ def userinfo(session=None):
 @RequireAuth("admin")
 def deleteuser(session=None, userid=None):
     if userid:
-        return "seccuss delete user id is {id}".format(id=userid)
+        return json_dumps(db_delet(userid))
+
 
 
 @route("/autherror")

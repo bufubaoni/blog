@@ -33,3 +33,13 @@ def db_add(user):
     finally:
         db_shadowsocks.commit()
     return (True, "insert user id is {id}".format(id=userid))
+
+
+def db_delet(user_id):
+    try:
+        db_shadowsocks(db_shadowsocks.user.id == user_id).delete()
+    except Exception as e:
+        return (False, "fault by " + e.message)
+    finally:
+        db_shadowsocks.commit()
+    return (True, "delect user id is {id}".format(id=user_id))
