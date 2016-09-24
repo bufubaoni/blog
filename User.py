@@ -11,19 +11,17 @@ def login():
     if request.method == "POST":
         username = request.forms["username"]
         password = request.forms["password"]
-        user = {key: value[0] for key, value in request.forms.dict.items()}
-        return json_dumps(user)
-        # users = db_shadowsocks((db_shadowsocks.user.email == username.strip()) &
-        #                        (db_shadowsocks.user.passwd == password.strip()))
-        # user = users.select().first()
-        # if user:
-        #     session = request.environ.get("beaker.session")
-        #     session["username"] = username
-        #     session["type"] = user.type
-        #     session["id"] = user.id
-        #     session["userid"] = user.id
-        #     session["email"] = username
-        #     redirect("/")
+        users = db_shadowsocks((db_shadowsocks.user.email == username.strip()) &
+                               (db_shadowsocks.user.passwd == password.strip()))
+        user = users.select().first()
+        if user:
+            session = request.environ.get("beaker.session")
+            session["username"] = username
+            session["type"] = user.type
+            session["id"] = user.id
+            session["userid"] = user.id
+            session["email"] = username
+            redirect("/")
     return "<form action='/login' method='post'>" \
            "<input name='username' />" \
            "</br>" \
