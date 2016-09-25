@@ -69,10 +69,33 @@ def deleteuser(session=None, userid=None):
     if userid:
         return json_dumps(db_delet(userid))
 
+
 @route("/edituser")
 @route("/edituser/<userid:int>")
+@post("/edituser/<userid:int>")
 @RequireAuth("admin")
-def edituser():
+def edituser(session=None, userid=None):
+    if request.method == "GET" and userid:
+        user = db_shadowsocks(db_shadowsocks.user.id == userid).select(
+            db_shadowsocks.user.transfer_enable,
+            db_shadowsocks.user.port,
+            db_shadowsocks.user.switch,
+            db_shadowsocks.user.enable
+        ).first()
+        return Form("/edituser/{userid}".format(userid=userid), **user.as_dict()).form()
+    elif request.method == "POST" and userid:
+        try:
+            info = json_lds(request.body)
+        except TypeError as e:
+            info = {key: value[0] for key, value in request.forms.dict.items()}
+        try:
+            db_shadowsocks(db_shadowsocks.user.id == userid).update(**info)
+        except Exception as e:
+            return e
+        finally:
+            db_shadowsocks.commit()
+        return "edit user seccuss"
+
     return "edit user for admin"
 
 
