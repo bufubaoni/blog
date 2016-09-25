@@ -18,6 +18,7 @@ the app use third libs
 
     pyDAL
     beaker
+    bottle
 
 db driver is :
 

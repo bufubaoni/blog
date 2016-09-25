@@ -8,7 +8,8 @@ setup(
     install_requires=[
         "pyDAL",
         "pymysql",
-        "beaker"
+        "beaker",
+        "bottle",
     ],
 )
 
