@@ -2,14 +2,19 @@
 # -*- coding: utf-8 -*-
 
 class Form(object):
-    def __init__(self, url):
+    def __init__(self, url, *args):
         self._url = url
+        self._para = args
 
     def form(self):
-        pass
+        
+        return ("<form action='{action}' method='post'>"
+                "{submit}"
+                "</form>")
 
-    def input(self):
-        pass
+    def input(self, name):
+        return ("<input type='text' placehold={name} name={name}>".format(name=name))
 
     def submit(self):
-        pass
+        return ("<input type='submit' value='submit'/> "
+                "<input type='button' value='cancel'>")
