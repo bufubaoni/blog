@@ -43,15 +43,15 @@ def adduser(session=None):
         if newuser:
             return json_dumps(db_add(newuser))
     return Form("/adduser", *["email",
-                             "passwordforss",
-                             "passwd",
-                             "t",
-                             "d",
-                             "u",
-                             "transfer_enable",
-                             "port",
-                             "switch",
-                             "enable",]).form()
+                              "passwordforss",
+                              "passwd",
+                              "t",
+                              "d",
+                              "u",
+                              "transfer_enable",
+                              "port",
+                              "switch",
+                              "enable", ]).form()
 
 
 @route("/infouser")
