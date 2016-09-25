@@ -45,7 +45,6 @@ def adduser(session=None):
     return Form("/adduser", *["email",
                               "passwordforss",
                               "passwd",
-                              "t",
                               "d",
                               "u",
                               "transfer_enable",
@@ -69,6 +68,12 @@ def userinfo(session=None):
 def deleteuser(session=None, userid=None):
     if userid:
         return json_dumps(db_delet(userid))
+
+@route("/edituser")
+@route("/edituser/<userid:int>")
+@RequireAuth("admin")
+def edituser():
+    return "edit user for admin"
 
 
 @error(403)

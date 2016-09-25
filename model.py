@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from pydal import DAL, Field
 from config import dbconfig
+import time
 
 db_shadowsocks = DAL(dbconfig)
 db_shadowsocks.define_table("user",
@@ -28,7 +29,8 @@ def db_add(user):
                db_shadowsocks.user.port).last()
 
     user.update({"id": row.id + 1,
-                 "port": row.port + 5})
+                 "port": row.port + 5,
+                 "t": int(time.time())})
     try:
         userid = db_shadowsocks.user.insert(**user)
     except Exception as e:
