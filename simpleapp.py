@@ -49,7 +49,6 @@ def adduser(session=None):
                               "d",
                               "u",
                               "transfer_enable",
-                              "port",
                               "switch",
                               "enable", ]).form()
 
