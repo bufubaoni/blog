@@ -23,11 +23,12 @@ db_shadowsocks.define_table("user",
 
 
 def db_add(user):
-    last_id, port = db_shadowsocks(db_shadowsocks.user.id > 0). \
+    row = db_shadowsocks(db_shadowsocks.user.id > 0). \
         select(db_shadowsocks.user.id,
                db_shadowsocks.user.port).last()
-    user.update({"id": last_id + 1,
-                 "port": port + 5})
+
+    user.update({"id": row.id + 1,
+                 "port": row.port + 5})
     try:
         userid = db_shadowsocks.user.insert(**user)
     except Exception as e:
