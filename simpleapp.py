@@ -7,6 +7,7 @@ from beaker.middleware import SessionMiddleware
 import bottle
 from config import session_option
 from Auth import RequireLogin, RequireAuth, setSession
+from Form import Form
 import User
 
 app = bottle.app()
@@ -41,7 +42,16 @@ def adduser(session=None):
             newuser = {key: value[0] for key, value in request.forms.dict.items()}
         if newuser:
             return json_dumps(db_add(newuser))
-    return "you can add user in this fun"
+    return Form("/adduser", *["email",
+                             "passwordforss",
+                             "passwd",
+                             "t",
+                             "d",
+                             "u",
+                             "transfer_enable",
+                             "port",
+                             "switch",
+                             "enable",]).form()
 
 
 @route("/infouser")

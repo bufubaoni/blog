@@ -7,13 +7,15 @@ class Form(object):
         self._para = args
 
     def form(self):
-        
+        inputs = "</br>".join(map(self.input, self._para))
         return ("<form action='{action}' method='post'>"
+                "{inputs}"
+                "</br>"
                 "{submit}"
-                "</form>")
+                "</form>".format(action=self._url, inputs=inputs, submit=self.submit()))
 
     def input(self, name):
-        return ("<input type='text' placehold={name} name={name}>".format(name=name))
+        return ("<input type='text' placeholder={name} name={name}>".format(name=name))
 
     def submit(self):
         return ("<input type='submit' value='submit'/> "
