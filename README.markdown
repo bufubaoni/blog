@@ -25,3 +25,9 @@ db driver is :
     pymysql
 
 you should install all requires
+
+Support eployment by gunicorn
+
+    gunicorn simpleapp:myapp --bind "host:port"
+
+you can run in gunicorn
