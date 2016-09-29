@@ -10,7 +10,7 @@ from config import session_option
 from Auth import RequireLogin, RequireAuth, setSession
 import User
 
-app = bottle.app()
+app = bottle.default_app()
 myapp = SessionMiddleware(app, session_option)
 
 
@@ -63,5 +63,5 @@ def deleteuser(session=None, userid=None):
 def autherror():
     return "auth error you get"
 
-
-bottle.run(app=myapp, host='localhost', port=8000, debug=True)
+if __name__ == "__name__":
+    bottle.run(app=myapp, host='localhost', port=8000, debug=True)
