@@ -2,4 +2,6 @@
 
     - 比较两分支文件不同
     - git diff branch_1 branch_2 --stat
+    - 比较两分支相同文件修改
+    - git diff branch_1 branch_2 matching/settings.py
 
