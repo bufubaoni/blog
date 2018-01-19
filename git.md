@@ -8,3 +8,8 @@
     - pr 之前如果不能自动合并，合并分支
     - git merge source target
 
+## 删除本地分支并重新拉取远程分支
+    需要切换到其他分支
+    然后删除本地分支
+    拉取远程分支
+    - git fetch origin temp:temp
