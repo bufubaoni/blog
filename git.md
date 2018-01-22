@@ -16,5 +16,6 @@
 
 ## rebase 使用
     如果多次合并提交，可以使用rebase 来进行变基 然后对分支进行合并
-    git rebase -i <hard>
-    
+    -- git rebase -i <hard>
+    -- 在 vim 中选择需要 保留的 commit
+    -- 删除未注释的commit内容，然后填写合并后需要提交的内容
