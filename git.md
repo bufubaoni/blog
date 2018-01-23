@@ -23,3 +23,7 @@
 ## 修改前一次提交
     如果只想一次提交内容，那么使用 amend 参数来修改上次提交，此时只提交一次commit
     -- git commit --amend 
+    -- git commit --amend -m "new message"
+
+## 注意
+	rebase过程中，由于修改了commit的顺序，所以需要强推 才可以
