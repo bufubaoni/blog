@@ -20,6 +20,7 @@
     -- 在 vim 中选择需要 保留的 commit
     -- 删除未注释的commit内容，然后填写合并后需要提交的内容
 
+    -- git rebase <source> 可以使用source分支为基分支
 ## 修改前一次提交
     如果只想一次提交内容，那么使用 amend 参数来修改上次提交，此时只提交一次commit
     -- git commit --amend 
