@@ -339,11 +339,11 @@ rdb.set_trance()
 然后 需要启用 telnet 客户端，连接到调试上。如果是win 的话需要启用此客户端
 
 celery 有时无法使用 root 权限启动，需要手动 允许
-
+```python
 from celery import platforms
 
 platforms.C_FORCE_ROOT = True
-
+```
 
 工作之余希望能找一个lua 的ide，希望有些事情能交给proxy层做，因为毕竟server层的运算或者代价还是挺大的。
 
@@ -470,3 +470,27 @@ schema 表明接受参数为test,并且此参数接受的值的类型为json格�
 
 由于个人发展问题，我再三考虑之后递交了辞呈。希望交接工作顺利吧。
 
+## django authoritation
+
+django 默认的的 认证`django.contrib.auth.backends.ModelBackend`,只能对username password 进行验证， 如果需要对user其他字段进行验证 那么需要重写写一个Backend，如果仅仅使用`authenticate`
+```python
+class MatchingBackend(object):
+    def authenticate(self, username=None, password=None):
+        """
+        自定义认证方法
+        """
+        if is_valid:
+            return user
+        else
+            return None
+
+
+
+    def get_user(self, user_id):
+        try:
+            return User.objects.get(pk=user_id)
+        except User.DoesNotExist:
+            return None
+```
+设置`AUTHENTICATION_BACKENDS`即可完成自定义认证的过程。
+设置中
