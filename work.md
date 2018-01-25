@@ -494,3 +494,12 @@ class MatchingBackend(object):
 ```
 设置`AUTHENTICATION_BACKENDS`即可完成自定义认证的过程。
 设置中
+
+## settings.py 全局配置
+django 肯定会有一个全局变量，一定会出现不同开发环境配置不一致的情况，那么需要一个行之有效的解决方案
+
+    - local server 两个版本server端的由专人维护啊
+    - local setting 此文件只放到文件中，或者反之server setting 随着版本管理
+    - 将setting中的不同变量设置为环境变量
+
+以上三种方法 都行之有效，当然存放到数据也一样，但是数据库链接肯定是一个需要维护的变量。个人更推荐第三种。需要初始化文件，写环境变量，还好规模不大，如果上规模，还需要另写一个配置。
