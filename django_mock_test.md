@@ -15,3 +15,10 @@
 
 ## 测试tasks
 业务中肯定会遇到测试tasks的时候，此时只直接测试其逻辑即可，也就是不使用delay方法，直接调用方法即可，使用`patch`可以简单的将其中的复杂调用减少为简单的`mock`方法。
+
+## 测试setting
+在测试过程中，发现有时候测试需要不同的配置，也就是环境settings，此时和运行环境隔离开，
+
+    - 使用不同的配置文件 
+    - manage.py test --settings=mysite.settings_local
+    - 如果仅仅是部分修改可以使用`override_settings`装饰器来对部分域的`settings`设置
