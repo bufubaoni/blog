@@ -22,3 +22,6 @@
     - 使用不同的配置文件 
     - manage.py test --settings=mysite.settings_local
     - 如果仅仅是部分修改可以使用`override_settings`装饰器来对部分域的`settings`设置
+## fakeredis
+
+    对于caches设置来说使用了django-redis本身就已经使用cache来存储了，但是使用了fakeredis之后希望测试可以用fakeredis来跑，官方说的很简单说只要配置defult即可，实际中并不能那么简单的配置。需要重写fakeredis的部分方法。当然官方有个很粗暴的方法就是将对象转化为了byte，需要重写次方法来还原对象，最简单的方法就是pickle。
