@@ -12,3 +12,15 @@
 
 ## 使用体验
 已经使用vscode 开发了一整个项目了，目前没有任何不适应，只是format 的时候遇到了一点麻烦，而且pep8有设置的问题，当然现在 结合flak8之后，无论是提示还是自动的格式化都很方便。
+
+## 最重要的插件配置
+由于使用了 sync 同步settings 所以基本上也没什么好记住什么需要特别的配置。只是如果auth不可以的时候，应该查看是否有权限访问gist，由于设置了读取为public，但是上传插件的时候，就会出现插件地址不同的地方。
+```
+windows 下设置token
+%APPDATA%\Code\User\syncLocalSettings.json.
+mac下设置token
+Mac, $HOME/Library/Application Support/Code/User/syncLocalSettings.json.
+linux 下设置token
+~/.config/Code/User/settings.json. 
+```
+除此意外也就没什么需要注意的了。gist 在git 上需要代理才可以上去。
