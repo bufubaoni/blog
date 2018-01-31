@@ -19,6 +19,7 @@
     -- git rebase -i <hard>
     -- 在 vim 中选择需要 保留的 commit
     -- 删除未注释的commit内容，然后填写合并后需要提交的内容
+    -- git pull --rebase <source> <branch>
 
     -- git rebase <source> 可以使用source分支为基分支
 ## 修改前一次提交
