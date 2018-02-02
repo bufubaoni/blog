@@ -345,6 +345,9 @@ from celery import platforms
 platforms.C_FORCE_ROOT = True
 ```
 
+celery 启动的时候其实需要backend的如果仅仅使用fakeredis的时候，目前会导致celery假死，虽然还不知道为什么，初步认为是客户端的问题，不过由于没有时间去做client 所以celery启动还是有问题，不过会体会
+### lua
+
 工作之余希望能找一个lua 的ide，希望有些事情能交给proxy层做，因为毕竟server层的运算或者代价还是挺大的。
 
 服务器认证，是无论如何的架构都绕不开的话题，现在有很多的方式进行认证，从远古的无法差别的请求，到cookie认证，再到session 认证，后来前后分离之后的 auth认证，认证过程无非是 密码，短信，u盾，指纹，
