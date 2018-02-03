@@ -345,7 +345,7 @@ from celery import platforms
 platforms.C_FORCE_ROOT = True
 ```
 
-celery 启动的时候其实需要backend的如果仅仅使用fakeredis的时候，目前会导致celery假死，虽然还不知道为什么，初步认为是客户端的问题，不过由于没有时间去做client 所以celery启动还是有问题，不过会体会
+celery 启动的时候其实需要backend的如果仅仅使用fakeredis的时候，目前会导致celery假死，虽然还不知道为什么，初步认为是客户端的问题，不过由于没有时间去做client 所以celery启动还是有问题。还是决定明天要再看一下celery的分析吧。主要是kombu.
 ### lua
 
 工作之余希望能找一个lua 的ide，希望有些事情能交给proxy层做，因为毕竟server层的运算或者代价还是挺大的。
