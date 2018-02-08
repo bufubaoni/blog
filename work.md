@@ -120,6 +120,8 @@ form 其实并没有做json 方面的检查，貌似如果仅仅是form表单的
 在使用django  cbv 的时候，如果单单将一个方法赋予变量，python 会默认将self 作为参数传入函数
 目前是用 反射解决，期待更好的解决
 
+在不同的viewset 中如果需要使用不同的permission 需要重写 get_permission
+
 ```python
 from rest_framework.views import APIView
 import steps
@@ -513,4 +515,5 @@ django 肯定会有一个全局变量，一定会出现不同开发环境配置�
 
 ## soft delete
     应用中很多情况下无需真正的删除内容，仅仅需要将其标记为删除即可，此时可以通过改变他的标识位置即可。django 中的多类继承需要将 mateclass 中的 `abstract = True `
+
 
