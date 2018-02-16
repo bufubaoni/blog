@@ -28,3 +28,37 @@ cargo 会创建一个pro-name 的项目结构，
 
 ## 爬虫
 我想任何一个语言开始，总要从最容易得到反馈都开始，对于我自己而言应该就是爬虫了吧。
+
+第一步我们肯定要从依赖开始，我当然不想从写socket 开始了，所以使用了依赖`hyper`。
+
+在`Cargo.toml`中写入依赖
+```
+    [dependencies]
+    futures = "0.1"
+    hyper = "0.11"
+    tokio-core = "0.1"
+```
+在文件中引入依赖
+```rust
+extern crate futures;
+extern crate hyper;
+extern crate tokio_core;
+
+use std::io::{self, Write};
+use futures::{Future, Stream};
+use hyper::Client;
+use tokio_core::reactor::Core;
+
+fn main() {
+    let mut core = Core::new().unwrap();
+    let client = Client::new(&core.handle());
+    let uri = "http://httpbin.org/ip".parse().unwrap();
+    let work = client.get(uri).and_then(|res| {
+        println!("Response: {}", res.status());
+        res.body()
+            .for_each(|chunk| io::stdout().write_all(&chunk).map_err(From::from))
+    });
+    core.run(work).unwrap();
+}
+
+```
