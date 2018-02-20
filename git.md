@@ -20,8 +20,10 @@
     -- 在 vim 中选择需要 保留的 commit
     -- 删除未注释的commit内容，然后填写合并后需要提交的内容
     -- git pull --rebase <source> <branch>
-
+    
     -- git rebase <source> 可以使用source分支为基分支 此分支需要切换一下分支，否则该分支仍然不是最新代码
+    
+    当rebase中修改重复时，代码时在一个临时分支，添加过修改后到文件后无需commit 直接 continue即可
 ## 修改前一次提交
     如果只想一次提交内容，那么使用 amend 参数来修改上次提交，此时只提交一次commit
     -- git commit --amend 
