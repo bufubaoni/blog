@@ -521,3 +521,7 @@ django 肯定会有一个全局变量，一定会出现不同开发环境配置�
 
 ## ai
 数字ai 是通过反馈来进行机器学习的，如果长时间才能得到返回，要么需要更精确的模型，要么需要更长的时间。
+
+## supervisor
+使用关闭supervisor
+  - sudo pkill -f supervisord
