@@ -40,4 +40,5 @@ if __name__ == "__main__":
 这个是一个实际的例子，也就是说 A类下的 方法 会被解释成当前bound方法，而module中function会被解释成function,
 如果我们为 get_x 这个类方法加上一个装饰器那么 就可以拿到这个fun 而不是单独的一个bound method， 也就是说在 drf 类中每一个method 是一个方法，而不是单独的类方法。
 
-
+## 序列化
+view 中需要将context 传递到序列化中 parent 会传递上一级的instance，但是多级传递的时候会导致source 的丢失
