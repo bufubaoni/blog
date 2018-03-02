@@ -524,3 +524,7 @@ django 肯定会有一个全局变量，一定会出现不同开发环境配置�
 ## supervisor
 使用关闭supervisor
   - sudo pkill -f supervisord
+
+## django admin
+使用admin 可以快速的搭建一个数据表的管理工具出来，所以好好利用还是很重要的。
+如果需要显示外链接那么使用 method 最好了。这样可以返回自定义的，tag 可以自定义。
