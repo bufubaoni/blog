@@ -42,3 +42,6 @@ if __name__ == "__main__":
 
 ## 序列化
 view 中需要将context 传递到序列化中 parent 会传递上一级的instance，但是多级传递的时候会导致source 的丢失
+
+## 自定义field
+需要自定义field的时候，一般情况下至需要重写`to_representation`即可，重写`to_internal_value`会更专业一点
