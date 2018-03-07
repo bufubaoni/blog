@@ -9,3 +9,9 @@ Dockerfile 的语意为每一个regoin 做cache，这样可以保证文件快�
  
  - docker pull <source>:<tag>
 
+ - docker service ls 服务列表
+
+ - docker stack deploy -c docker-compose.yml 使用service 部署
+
+
+
