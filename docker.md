@@ -11,6 +11,7 @@ Dockerfile 的语意为每一个regoin 做cache，这样可以保证文件快�
 
  - docker service ls 服务列表
 
+ - docker -it <containter id> /bin/bash 进入运行中的 container 
 ## swarm service
 使用docker-compose.yml启动service
 
