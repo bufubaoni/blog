@@ -29,3 +29,4 @@ service数量
 
  - docker ps 可以看到运行中的docker镜像
 
+ - docker-compose up 使用docker compose启动服务
