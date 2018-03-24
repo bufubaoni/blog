@@ -47,3 +47,6 @@ view 中需要将context 传递到序列化中 parent 会传递上一级的inst
 需要自定义field的时候，一般情况下至需要重写`to_representation`即可，重写`to_internal_value`会更专业一点
 
 readonly只是进行单项绑定，如果修改和返回的内容不同  需要修改 serializer本身对内容，因为会直接做修改，而没有到 field
+
+## serializer query
+在进行orm序列化的时候，仍然会全部加载数据，继而多出不必要的sql。
