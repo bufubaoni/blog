@@ -50,3 +50,8 @@ readonly只是进行单项绑定，如果修改和返回的内容不同  需要�
 
 ## serializer query
 在进行orm序列化的时候，仍然会全部加载数据，继而多出不必要的sql。
+
+## Django static
+ 
+ 使用不同的 setting 文件启动的时候 需要不同的配置
+ 
