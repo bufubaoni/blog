@@ -561,4 +561,6 @@ thrift 会起16个worker线程处理发来的请求
 
 - celery flower -A APP 
 
-在使用docker跑flower的时候发现并不能访问worker页面，感觉是部分文件或者内存不能共享的远影
+在使用docker跑flower的时候发现并不能访问worker页面，感觉是部分文件或者内存不能共享的原因
+
+经过排查 原来是flower的依赖tornado 的问题
