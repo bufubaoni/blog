@@ -555,3 +555,10 @@ maxWorkerThreads 默认值是1000
 
 thrift 会起16个worker线程处理发来的请求
 如果请求超过 maxWorkerThreads 的设置也就是1000后就会起第17个线程
+
+## celery
+使用 celery flower 可以方便的查看队列中的数据
+
+- celery flower -A APP 
+
+在使用docker跑flower的时候发现并不能访问worker页面，感觉是部分文件或者内存不能共享的远影
