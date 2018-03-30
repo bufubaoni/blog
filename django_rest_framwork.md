@@ -54,4 +54,7 @@ readonly只是进行单项绑定，如果修改和返回的内容不同  需要�
 ## Django static
  
  使用不同的 setting 文件启动的时候 需要不同的配置
- 
+
+## APIView
+
+在使用一些框架的时候只要返回 字典或者列表即可，当然使用rest framework 也可以使用相同的思路，最简单的改造就是吧 `finalize_response` 即可
