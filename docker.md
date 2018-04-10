@@ -30,3 +30,5 @@ service数量
  - docker ps 可以看到运行中的docker镜像
 
  - docker-compose up 使用docker compose启动服务
+
+ 发生了一个docker 停机的时间，然后导致服务宕了，然后发现了两个docker进程，将两个进程都杀掉以后才恢复了一个，至于为什么会出现两个，可能就是因为一个停止失败了，另一个也没有完全起来
