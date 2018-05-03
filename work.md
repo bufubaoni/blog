@@ -577,3 +577,9 @@ thrift 会起16个worker线程处理发来的请求
 
 ## npm
 由于npm 和cnpm处理不同，倒是cnpm不会读取lock文件中的信息所以导致build不通过，导致了deploy不work。在这里记录一下
+
+## sqlalchemy
+使用alembic 来进行model的migrate
+创建数据库前需要设置 version的位置
+alembic stamp head
+然后进行当前分支的变换
