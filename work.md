@@ -581,5 +581,8 @@ thrift 会起16个worker线程处理发来的请求
 ## sqlalchemy
 使用alembic 来进行model的migrate
 创建数据库前需要设置 version的位置
-alembic stamp head
+- alembic stamp head
 然后进行当前分支的变换
+最后
+- alembic upgrade head
+接受当前改变 也就是 migrat
