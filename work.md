@@ -580,6 +580,8 @@ thrift 会起16个worker线程处理发来的请求
 
 ## sqlalchemy
 使用alembic 来进行model的migrate
+- alembic revision -m "Add a column"
+- alembic revision --autogenerate -m "add event"
 创建数据库前需要设置 version的位置
 - alembic stamp head
 然后进行当前分支的变换
