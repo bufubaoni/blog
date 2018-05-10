@@ -29,5 +29,8 @@
     -- git commit --amend 
     -- git commit --amend -m "new message"
 
+## 提交到远程分支
+    -- git push <origin>:<branch> -[f]
+    -- git push
 ## 注意
 	rebase过程中，由于修改了commit的顺序，所以需要强推 才可以
