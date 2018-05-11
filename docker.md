@@ -34,3 +34,26 @@ service数量
  发生了一个docker 停机的时间，然后导致服务宕了，然后发现了两个docker进程，将两个进程都杀掉以后才恢复了一个，至于为什么会出现两个，可能就是因为一个停止失败了，另一个也没有完全起来
 其实本地的swarm 一直就没有启动成功。
 还是打算使用k8s来管理项目吧。
+
+## k8s
+minikube v0.25.2
+minikube 安装需要google的镜像，总结出来了，如果镜像不能用，从阿里自行搜索
+ -  docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/k8s-dns-sidecar-amd64:1.14.5
+ -  docker tag registry.cn-hangzhou.aliyuncs.com/dck8s/k8s-dns-sidecar:1.14.15 k8s.gcr.io/k8s-dns-sidecar-amd64:1.14.5
+ 
+ -  docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/k8s-dns-kube-dns-amd64:1.14.5
+ -  docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/k8s-dns-kube-dns-amd64:1.14.5 k8s.gcr.io/k8s-dns-kube-dns-amd64:1.14.5
+
+ -  docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.5
+ -  docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.5 k8s.gcr.io/k8s-dns-dnsmasq-nanny-amd64:1.14.5
+
+ -  docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-addon-manager:v6.5
+ -  docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-addon-manager:v6.5 gcr.io/google-containers/kube-addon-manager:v6.5
+
+ -  docker pull registry.cn-hangzhou.aliyuncs.com/kube_containers/kubernetes-dashboard-amd64:v1.8.1
+ -  docker tag registry.cn-hangzhou.aliyuncs.com/kube_containers/kubernetes-dashboard-amd64:v1.8.1 k8s.gcr.io/kubernetes-dashboard-amd64:v1.8.1
+
+ -  docker pull registry.cn-hangzhou.aliyuncs.com/google-containers/pause-amd64:3.0
+ -  docker tag registry.cn-hangzhou.aliyuncs.com/google-containers/pause-amd64:3.0 gcr.io/google_containers/pause-amd64:3.0
+ -  docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/storage-provisioner:v1.8.1
+ -  docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/storage-provisioner:v1.8.1 gcr.io/k8s-minikube/storage-provisioner:v1.8.1
