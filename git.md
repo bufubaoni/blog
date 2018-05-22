@@ -28,6 +28,7 @@
     如果只想一次提交内容，那么使用 amend 参数来修改上次提交，此时只提交一次commit
     -- git commit --amend 
     -- git commit --amend -m "new message"
+    -- git commit  --amend --author=xxx 修改提交用户
 
 ## 提交到远程分支
     -- git push <origin>:<branch> -[f]
