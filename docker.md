@@ -57,3 +57,6 @@ minikube 安装需要google的镜像，总结出来了，如果镜像不能用�
  -  docker tag registry.cn-hangzhou.aliyuncs.com/google-containers/pause-amd64:3.0 gcr.io/google_containers/pause-amd64:3.0
  -  docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/storage-provisioner:v1.8.1
  -  docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/storage-provisioner:v1.8.1 gcr.io/k8s-minikube/storage-provisioner:v1.8.1
+
+ - docker pull registry.cn-hangzhou.aliyuncs.com/junv/kubernetes-bootcamp:v1 
+ - docker tag registry.cn-hangzhou.aliyuncs.com/junv/kubernetes-bootcamp:v1 gcr.io/google-samples/kubernetes-bootcamp:v1
