@@ -60,3 +60,17 @@ minikube 安装需要google的镜像，总结出来了，如果镜像不能用�
 
  - docker pull registry.cn-hangzhou.aliyuncs.com/junv/kubernetes-bootcamp:v1 
  - docker tag registry.cn-hangzhou.aliyuncs.com/junv/kubernetes-bootcamp:v1 gcr.io/google-samples/kubernetes-bootcamp:v1
+
+获取所有服务及pods
+ - kubectl get all
+创建服务
+ - kubectl create -f xxx.yaml
+
+更新compose config
+- kubectl apply -f xxx.yaml
+
+更新pod 的image
+- ubectl set image deployment/app-deployment app=app-image
+
+查看logs
+- kubectl logs <deployment-instance>
