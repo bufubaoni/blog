@@ -39,7 +39,7 @@ service数量
 minikube v0.25.2
 minikube 安装需要google的镜像，总结出来了，如果镜像不能用，从阿里自行搜索
  -  docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/k8s-dns-sidecar-amd64:1.14.5
- -  docker tag registry.cn-hangzhou.aliyuncs.com/dck8s/k8s-dns-sidecar:1.14.15 k8s.gcr.io/k8s-dns-sidecar-amd64:1.14.5
+ -  docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/k8s-dns-sidecar-amd64:1.14.5 k8s.gcr.io/k8s-dns-sidecar-amd64:1.14.5
  
  -  docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/k8s-dns-kube-dns-amd64:1.14.5
  -  docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/k8s-dns-kube-dns-amd64:1.14.5 k8s.gcr.io/k8s-dns-kube-dns-amd64:1.14.5
