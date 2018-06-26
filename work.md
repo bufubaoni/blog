@@ -588,3 +588,8 @@ thrift 会起16个worker线程处理发来的请求
 最后
 - alembic upgrade head
 接受当前改变 也就是 migrat
+
+## proxy问题
+一般情况下ssr可以保证当前terminal是可用的，当在terminal的时候或许需要全局代理，那么使用whistle可以将ssr转为http，如果使用go 语言的时候，需要信任whistle的根证书。
+
+那么在docker使用当前代理需要在dockerfile配置代理环境。然后执行完后再次关掉

@@ -70,7 +70,7 @@ minikube 安装需要google的镜像，总结出来了，如果镜像不能用�
 - kubectl apply -f xxx.yaml
 
 更新pod 的image
-- ubectl set image deployment/app-deployment app=app-image
+- kubectl set image deployment/app-deployment app=app-image
 
 查看logs
 - kubectl logs <deployment-instance>
