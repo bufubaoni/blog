@@ -69,8 +69,15 @@ minikube 安装需要google的镜像，总结出来了，如果镜像不能用�
 更新compose config
 - kubectl apply -f xxx.yaml
 
+删除 conmpose
+- kubectl delete -f xxx.yaml
+
 更新pod 的image
 - kubectl set image deployment/app-deployment app=app-image
 
 查看logs
 - kubectl logs <deployment-instance>
+
+查看节点port
+- minikube service <service-name> --url
+- kubectl get services 注：可以获得当前namespec所有service信息，如果 service type为NodePort 那么后就已经映射出来，可以使用虚拟机地址+port访问（例如：193.168.99.100:xxxxx 一般为4位端口）
