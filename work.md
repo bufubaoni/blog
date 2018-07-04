@@ -593,3 +593,20 @@ thrift 会起16个worker线程处理发来的请求
 一般情况下ssr可以保证当前terminal是可用的，当在terminal的时候或许需要全局代理，那么使用whistle可以将ssr转为http，如果使用go 语言的时候，需要信任whistle的根证书。
 
 那么在docker使用当前代理需要在dockerfile配置代理环境。然后执行完后再次关掉
+
+## pyenv
+使用mac 第一个安装的软件就是brew 然后就是pyenv，
+- 提供了python的版本管理
+- 切换默认版本
+- 允许使用本地py版本进行版本隔离
+
+- echo 'eval "$(pyenv init -)"' >> ~/.zshrc 替换pyenv
+- source ~/.zshrc
+
+- pyenv install 3.6.0  安装版本
+- pyenv global 2.7.13 3.6.0 设置全局默认版本
+- pyenv local 3.5.2 当前文件夹
+- pyenv versions 安装过的版本
+
+## pipenv
+标准的虚拟管理环境，当使用不同版本python的时候会直接从pyenv中选取，将系统的py环境替换为pyenv的环境即可
