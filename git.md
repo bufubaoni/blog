@@ -29,6 +29,7 @@
     -- git commit --amend 
     -- git commit --amend -m "new message"
     -- git commit  --amend --author=xxx 修改提交用户
+    -- git pull origin master:master 从远程
 
 ## 提交到远程分支
     -- git push <origin>:<branch> -[f]
