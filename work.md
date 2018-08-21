@@ -613,3 +613,13 @@ thrift 会起16个worker线程处理发来的请求
 
 ## RSA 加密
 一定是公钥加密，私钥匙解密。并不是可以调换的。
+分享一个简单的rsa 生成密钥的工具
+```
+openssl
+genrsa -out rsa_private_key.pem 1024
+rsa -in rsa_private_key.pem -pubout -out rsa_public_key.pem
+```
+文件名称可以自定义
+
+当然加密完成了下面就是应用了，针对分布式系统常常认真使用统一的服务器，如果将session数据加密存入token中，可以保证数据的安全。使用非堆成加密可以保证，如果key泄漏后则直接替换key即可，只是用户需要重新登陆。
+
