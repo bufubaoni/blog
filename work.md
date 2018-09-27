@@ -608,6 +608,10 @@ thrift 会起16个worker线程处理发来的请求
 - pyenv local 3.5.2 当前文件夹
 - pyenv versions 安装过的版本
 
+### 安装列表没有的py 版本可通过编译安装
+- cd ~/.pyenv/plugins/python-build && git pull
+- pyenv install -v 3.7.0
+
 ## pipenv
 标准的虚拟管理环境，当使用不同版本python的时候会直接从pyenv中选取，将系统的py环境替换为pyenv的环境即可
 
