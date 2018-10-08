@@ -614,6 +614,16 @@ thrift 会起16个worker线程处理发来的请求
 
 ## pipenv
 标准的虚拟管理环境，当使用不同版本python的时候会直接从pyenv中选取，将系统的py环境替换为pyenv的环境即可
+```shell
+pip install pipenv==2018.6.25
+pip install pip==18.0
+pipenv install
+
+pip install pipenv
+pipenv run pip install pip==18.0
+pipenv install
+```
+由于新版bug问题需要使用 pip为18.0 才可以成功
 
 ## RSA 加密
 一定是公钥加密，私钥匙解密。并不是可以调换的。
@@ -627,3 +637,8 @@ rsa -in rsa_private_key.pem -pubout -out rsa_public_key.pem
 
 当然加密完成了下面就是应用了，针对分布式系统常常认真使用统一的服务器，如果将session数据加密存入token中，可以保证数据的安全。使用非堆成加密可以保证，如果key泄漏后则直接替换key即可，只是用户需要重新登陆。
 
+## time out
+如果外部调用时间等待很长则需要time out 掉这个进程，那么可以使用多进程或者线程来启动这个方法，然后记录查询查询是否结束，如果在时间内则返回结果，如果没有返回结果，则kill 掉这个进程或线程，raise timeouterror。
+
+## retry
+这个需要根据实际情况来使用，一般来说是判断是否需要retry，最好是得到一个retry 的exception 最好判断。
