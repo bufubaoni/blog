@@ -34,5 +34,19 @@
 ## 提交到远程分支
     -- git push <origin>:<branch> -[f]
     -- git push
+
+## 修改hook
+    项目下 .git/hook 下会有hook文件
+    去除.simple 后可作为client的hook使用。可在文件中使用bash来对各种hook进行操作
+    pre-push为提交代码前进行检测
+
+    ```bash
+        gitBranchName=$(git branch | grep '*' | sed 's/* //')
+        if [ "master" != "$gitBranchName" ]; then
+            do something ...
+        fi
+    ```
+    以上脚本为 当前分支不是master的时候做的额外的操作
+    
 ## 注意
 	rebase过程中，由于修改了commit的顺序，所以需要强推 才可以
