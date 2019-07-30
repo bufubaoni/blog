@@ -642,3 +642,17 @@ rsa -in rsa_private_key.pem -pubout -out rsa_public_key.pem
 
 ## retry
 这个需要根据实际情况来使用，一般来说是判断是否需要retry，最好是得到一个retry 的exception 最好判断。
+
+## python3 中字符串转换
+使用protobuf当序列化为字符串的时候会转换成8进制的字符串例如
+
+`"\\346\\265\\213\\350\\257\\2252"`
+
+需要进行转换
+这时候 在python3 中使用
+
+```python
+import codecs
+codecs.escape_decode(source_str)[0].decode('utf8')
+```
+即可得到正确的字符串
