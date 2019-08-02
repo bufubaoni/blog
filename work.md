@@ -656,3 +656,35 @@ import codecs
 codecs.escape_decode(source_str)[0].decode('utf8')
 ```
 即可得到正确的字符串
+
+## gitlab
+一直使用jenkins进行ci管理，其实gitlab同样集成了ci
+
+首先设置runner
+
+下面是一个简单例子
+```yml
+image: ubuntu:16.04
+# before_script:
+
+job1:
+  script:
+    - make run
+  tags:
+    - macos
+  # only:
+  #   - tags
+  #   - /^job1*/
+job2:
+  script:
+    - echo job2
+  # only:
+  #   - tags
+  #   - /^job2*/
+  tags:
+    - macos
+```
+
+job1 only 可以添加tags 用来做job的filter
+
+其中tags为 runner的selector，可以设置当前的stage，简单不失灵活，也可是设置各种trigger。
