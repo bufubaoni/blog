@@ -20,3 +20,11 @@
 1.  python3 安装jupyter `pip3 install jupyter`
 2.  启用python3的kernel `ipython3 kernelspec install-self`
 3.  打开jupyter的主页，然后即可看到拥有 python3 的notebook类型
+---
+设置
+jupyter notebook --generate-config 生成配置文件
+jupyter notebook --ip=0.0.0.0 --no-browser --allow-root
+---
+注：
+如果本机有两个jupyter 那么两个会互相影响，如果当前的起不来那么
+使用 `lsof -i tcp:8888`(查看当前占用端口的进程)来查看进程，然后`kill -9 <pid>`关闭此进程即可
